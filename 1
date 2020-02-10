@@ -3,7 +3,7 @@
 #include<fstream>
 
 using namespace std;
-//függvény hívás referenciaként átadott paraméterrel
+//függvény referencia szerinti paraméter átadással
 int highestdent(vector<int>& numbers){
     bool L = false;
     int mymax=0;
@@ -35,12 +35,18 @@ int readhights(string file,vector<int>& numbers){
     ifstream k;
     k.open(file);
     int n;
-    cout << "asd";
     while(k >> n){
         numbers.push_back(n);
     }
-    cout << numbers.size();
     k.close();
+}
+
+//refferencia példa
+int plref(int& a){
+    a = 1;
+}
+int plnemref(int a){
+    a=1;
 }
 
 int main(){
@@ -89,5 +95,18 @@ int main(){
     readhights("tavok.txt",numbers);
     highestdent(numbers);
 
+    cout << endl;
+    // referencia
+    int mynum= 10;
+    plref(mynum);
+    cout << mynum << endl;
+    mynum= 10;
+    plnemref(mynum);
+    cout << mynum << endl;
+
+
     return 0;
+
+
+
 }
